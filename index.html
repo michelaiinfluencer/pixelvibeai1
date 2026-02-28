@@ -127,17 +127,42 @@
       justify-content: center;
       text-align: center;
       padding: 120px 24px 80px;
-      background: var(--bg);
+      background: #0e0e1a;
       position: relative;
       overflow: hidden;
+    }
+
+    /* Video background */
+    .hero-video {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.45;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    /* Dark overlay so text stays readable */
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom,
+          rgba(14, 14, 26, 0.55) 0%,
+          rgba(14, 14, 26, 0.35) 50%,
+          rgba(14, 14, 26, 0.75) 100%);
+      z-index: 1;
+      pointer-events: none;
     }
 
     .hero-blob {
       position: absolute;
       border-radius: 50%;
       filter: blur(80px);
-      opacity: 0.18;
+      opacity: 0.12;
       pointer-events: none;
+      z-index: 2;
     }
 
     .blob1 {
@@ -162,6 +187,37 @@
       background: var(--accent-3);
       top: 30%;
       right: 15%;
+    }
+
+    /* Make hero text white since bg is now dark */
+    #hero h1 {
+      color: #fff;
+    }
+
+    #hero .hero-sub {
+      color: rgba(255, 255, 255, 0.72);
+    }
+
+    #hero .hero-badge {
+      background: rgba(255, 255, 255, 0.1);
+      border-color: rgba(255, 255, 255, 0.2);
+      color: #fff;
+    }
+
+    #hero .btn-ghost {
+      color: #fff;
+      border-color: rgba(255, 255, 255, 0.35);
+    }
+
+    #hero .btn-ghost:hover {
+      border-color: #fff;
+      color: #fff;
+    }
+
+    /* Push all hero content above the video */
+    #hero>*:not(.hero-video):not(.hero-overlay) {
+      position: relative;
+      z-index: 3;
     }
 
     .hero-badge {
@@ -701,13 +757,19 @@
       <li><a href="#services">Services</a></li>
       <li><a href="#portfolio">Work</a></li>
       <li><a href="#contact">Contact</a></li>
-      <li><a>Lena Tupaya Schlyha</a></li>
     </ul>
     <a href="#contact" class="nav-cta">Join Waitlist →</a>
   </nav>
 
   <!-- ─── HERO ─── -->
   <section id="hero">
+
+    <!-- 🎬 SWAP src="assets/your-video.mp4" with your real video file -->
+    <video class="hero-video" autoplay muted loop playsinline>
+      <source src="assets/hero-bg.mp4" type="video/mp4">
+    </video>
+    <div class="hero-overlay"></div>
+
     <div class="hero-blob blob1"></div>
     <div class="hero-blob blob2"></div>
     <div class="hero-blob blob3"></div>
