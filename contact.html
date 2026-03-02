@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact — PixelVibe AI</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+</head>
+
+<body class="subpage">
+
+    <!-- ─── HEADER ─── -->
+    <header class="site-header scrolled">
+        <nav>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="reel.html">Reel</a></li>
+                <li><a href="gallery.html">Work</a></li>
+                <li><a href="workflow.html">How It Works</a></li>
+                <li><a href="contact.html" class="active">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <!-- ─── CONTACT ─── -->
+        <section id="contact" style="padding-top: 140px; min-height: 80vh; display: flex; align-items: center;">
+            <div class="container">
+                <div class="contact-inner">
+                    <span class="section-eyebrow">Get Early Access</span>
+                    <h2 class="section-title">Be First<br>in Line</h2>
+                    <p class="section-sub">
+                        We're onboarding a select group of founding clients.
+                        Join the waitlist and we'll be in touch to discuss your project.
+                    </p>
+
+                    <form class="waitlist-form" id="waitlistForm" action="https://formspree.io/f/xgolbykl"
+                        method="POST">
+                        <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off" />
+                        <div class="form-row">
+                            <input class="form-field" type="text" name="name" placeholder="Your name" required />
+                            <input class="form-field" type="email" name="email" placeholder="Email address" required />
+                        </div>
+                        <select class="form-field form-select" name="service">
+                            <option value="" disabled selected>What are you interested in?</option>
+                            <option value="images">AI Image &amp; Art Generation</option>
+                            <option value="video">AI Video &amp; Animation</option>
+                            <option value="branding">Brand Visual Identity</option>
+                            <option value="social">Social &amp; Campaign Content</option>
+                            <option value="all">All of the above</option>
+                        </select>
+                        <textarea class="form-field" name="message" rows="3"
+                            placeholder="Tell us about your project (optional)"></textarea>
+                        <button type="submit" class="btn-primary" id="submitBtn">Join the Waitlist →</button>
+                        <p class="form-note">No spam. Ever. We'll only reach out about your project.</p>
+                        <p class="form-error" id="formError" style="display:none;"></p>
+                    </form>
+
+                    <div class="success-msg" id="successMsg">
+                        You're on the list. We'll be in touch very soon.
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- ─── FOOTER ─── -->
+    <footer id="footer-placeholder"></footer>
+    <script src="assets/footer.js"></script>
+    <script>
+        /* ─── FORM ─── */
+        const waitlistForm = document.getElementById('waitlistForm');
+        const submitBtn = document.getElementById('submitBtn');
+        const successMsg = document.getElementById('successMsg');
+        const formError = document.getElementById('formError');
+        const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+        const formLoadTime = Date.now();
+        const MIN_HUMAN_MS = 3000;
+        let lastSubmitTime = 0;
+        const RATE_LIMIT_MS = 60000;
+
+        function showFormError(msg) {
+            formError.textContent = msg;
+            formError.style.display = 'block';
+            submitBtn.disabled = false;
+            submitBtn.textContent = 'Join the Waitlist →';
+        }
+
+        waitlistForm.addEventListener('submit', async function (e) {
+            e.preventDefault();
+            formError.style.display = 'none';
+            const emailVal = (waitlistForm.email.value || '').trim();
+            if (!EMAIL_RE.test(emailVal)) { showFormError('Please enter a valid email address.'); return; }
+            if (Date.now() - formLoadTime < MIN_HUMAN_MS) { waitlistForm.style.display = 'none'; successMsg.style.display = 'block'; return; }
+            const now = Date.now();
+            if (now - lastSubmitTime < RATE_LIMIT_MS) { showFormError('Please wait a moment before submitting again.'); return; }
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Sending…';
+            try {
+                const response = await fetch(waitlistForm.action, {
+                    method: 'POST',
+                    body: new FormData(waitlistForm),
+                    headers: { 'Accept': 'application/json' }
+                });
+                if (response.ok) {
+                    lastSubmitTime = Date.now();
+                    waitlistForm.style.display = 'none';
+                    successMsg.style.display = 'block';
+                } else {
+                    const data = await response.json().catch(() => ({}));
+                    const msg = data?.errors?.map(err => err.message).join(' ') || 'Something went wrong.';
+                    showFormError(msg);
+                }
+            } catch (_) { showFormError('Network error — please try again.'); }
+        });
+
+        /* ─── FADE-IN ON SCROLL ─── */
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.fade-up').forEach((el, i) => {
+            observer.observe(el);
+        });
+    </script>
+</body>
+
+</html>

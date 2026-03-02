@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Services — PixelVibe AI</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+</head>
+
+<body class="subpage">
+
+    <!-- ─── HEADER ─── -->
+    <header class="site-header scrolled">
+        <nav>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="services.html" class="active">Services</a></li>
+                <li><a href="reel.html">Reel</a></li>
+                <li><a href="gallery.html">Work</a></li>
+                <li><a href="workflow.html">How It Works</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="page-hero">
+            <div class="container fade-up">
+                <span class="section-eyebrow">Our Expertise</span>
+                <h1 class="section-title">Creative AI Services</h1>
+                <p class="section-sub">We fuse cutting-edge technology with human vision to push the boundaries of
+                    what's possible.</p>
+            </div>
+        </section>
+
+        <!-- ─── MARQUEE ─── -->
+        <div class="marquee-wrap">
+            <div class="marquee-track">
+                <span class="marquee-item">AI Image Generation</span>
+                <span class="marquee-item">·</span>
+                <span class="marquee-item">AI Video Production</span>
+                <span class="marquee-item">·</span>
+                <span class="marquee-item">Brand Visuals</span>
+                <span class="marquee-item">·</span>
+                <span class="marquee-item">Creative Direction</span>
+                <span class="marquee-item">·</span>
+                <span class="marquee-item">Motion Design</span>
+                <span class="marquee-item">·</span>
+                <span class="marquee-item">Art Direction</span>
+                <span class="marquee-item">·</span>
+                <span class="marquee-item">Concept Art</span>
+                <span class="marquee-item">·</span>
+                <span class="marquee-item">Product Renders</span>
+                <span class="marquee-item">·</span>
+                <!-- duplicate for seamless loop -->
+                <span class="marquee-item">AI Image Generation</span>
+                <span class="marquee-item">·</span>
+                <span class="marquee-item">AI Video Production</span>
+                <span class="marquee-item">·</span>
+                <span class="marquee-item">Brand Visuals</span>
+                <span class="marquee-item">·</span>
+                <span class="marquee-item">Creative Direction</span>
+                <span class="marquee-item">·</span>
+                <span class="marquee-item">Motion Design</span>
+                <span class="marquee-item">·</span>
+                <span class="marquee-item">Art Direction</span>
+                <span class="marquee-item">·</span>
+                <span class="marquee-item">Concept Art</span>
+                <span class="marquee-item">·</span>
+                <span class="marquee-item">Product Renders</span>
+                <span class="marquee-item">·</span>
+            </div>
+        </div>
+
+
+        <!-- ─── SERVICES ─── -->
+        <section id="services">
+            <div class="container">
+                <div class="services-grid">
+                    <div class="service-card fade-up">
+                        <span class="service-num">01</span>
+                        <h3>AI Image &amp; Art Generation</h3>
+                        <p>From photorealistic product shots to surreal concept art — we craft visuals that stop the
+                            scroll and tell your story at a glance.</p>
+                        <div class="service-tools">
+                            <span class="service-tool-tag">Midjourney</span>
+                            <span class="service-tool-tag">Stable Diffusion</span>
+                            <span class="service-tool-tag">Flux</span>
+                        </div>
+                    </div>
+
+                    <div class="service-card fade-up">
+                        <span class="service-num">02</span>
+                        <h3>AI Video &amp; Animation</h3>
+                        <p>Cinematic AI video campaigns, motion graphics, and animated content that brings your brand to
+                            life across every platform.</p>
+                        <div class="service-tools">
+                            <span class="service-tool-tag">Sora</span>
+                            <span class="service-tool-tag">Runway</span>
+                            <span class="service-tool-tag">Kling</span>
+                        </div>
+                    </div>
+
+                    <div class="service-card fade-up">
+                        <span class="service-num">03</span>
+                        <h3>Brand Visual Identity</h3>
+                        <p>Cohesive visual systems — logos, campaign imagery, color palettes — crafted with AI-assisted
+                            precision and creative strategy.</p>
+                        <div class="service-tools">
+                            <span class="service-tool-tag">Branding</span>
+                            <span class="service-tool-tag">Style Guides</span>
+                        </div>
+                    </div>
+
+                    <div class="service-card fade-up">
+                        <span class="service-num">04</span>
+                        <h3>Social &amp; Campaign Content</h3>
+                        <p>Scroll-stopping social content, ad creatives, and campaign visuals delivered fast — without
+                            sacrificing quality or originality.</p>
+                        <div class="service-tools">
+                            <span class="service-tool-tag">Instagram</span>
+                            <span class="service-tool-tag">TikTok</span>
+                            <span class="service-tool-tag">YouTube</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- ─── FOOTER ─── -->
+    <footer id="footer-placeholder"></footer>
+    <script src="assets/footer.js"></script>
+
+    <script>
+        /* ─── FADE-IN ON SCROLL ─── */
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.fade-up').forEach((el, i) => {
+            el.style.transitionDelay = `${(i % 4) * 80}ms`;
+            observer.observe(el);
+        });
+    </script>
+</body>
+
+</html>

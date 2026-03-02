@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Work — PixelVibe AI</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+</head>
+
+<body class="subpage">
+
+    <!-- ─── HEADER ─── -->
+    <header class="site-header scrolled">
+        <nav>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="reel.html">Reel</a></li>
+                <li><a href="gallery.html" class="active">Work</a></li>
+                <li><a href="workflow.html">How It Works</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <!-- ─── GALLERY ─── -->
+        <section id="gallery" style="padding-top: 140px;">
+            <div class="container">
+                <div class="gallery-header fade-up">
+                    <span class="section-eyebrow">Our Work</span>
+                    <h2 class="section-title">Creative That<br>Speaks Volumes</h2>
+                    <p class="section-sub">
+                        A glimpse into our latest AI-generated imagery. Every piece —
+                        original, intentional, and made to impress.
+                    </p>
+                </div>
+
+                <div class="gallery-grid">
+                    <div class="gallery-item fade-up" onclick="openLightbox('assets/m11.jpg')">
+                        <img src="assets/m11.jpg" alt="AI Generated Visual 1" loading="lazy" />
+                        <div class="gallery-item-overlay">
+                            <span class="gallery-item-label">AI Visual — Series I</span>
+                        </div>
+                    </div>
+                    <div class="gallery-item fade-up" onclick="openLightbox('assets/m21.jpg')">
+                        <img src="assets/m21.jpg" alt="AI Generated Visual 2" loading="lazy" />
+                        <div class="gallery-item-overlay">
+                            <span class="gallery-item-label">AI Visual — Series II</span>
+                        </div>
+                    </div>
+                    <div class="gallery-item fade-up" onclick="openLightbox('assets/m31.jpg')">
+                        <img src="assets/m31.jpg" alt="AI Generated Visual 3" loading="lazy" />
+                        <div class="gallery-item-overlay">
+                            <span class="gallery-item-label">AI Visual — Series III</span>
+                        </div>
+                    </div>
+                    <div class="gallery-item fade-up" onclick="openLightbox('assets/m41.jpg')">
+                        <img src="assets/m41.jpg" alt="AI Generated Visual 4" loading="lazy" />
+                        <div class="gallery-item-overlay">
+                            <span class="gallery-item-label">AI Visual — Series IV</span>
+                        </div>
+                    </div>
+                    <div class="gallery-item fade-up" onclick="openLightbox('assets/m51.jpg')">
+                        <img src="assets/m51.jpg" alt="AI Generated Visual 5" loading="lazy" />
+                        <div class="gallery-item-overlay">
+                            <span class="gallery-item-label">AI Visual — Series V</span>
+                        </div>
+                    </div>
+                    <div class="gallery-item fade-up" onclick="openLightbox('assets/m61.jpg')">
+                        <img src="assets/m61.jpg" alt="AI Generated Visual 6" loading="lazy" />
+                        <div class="gallery-item-overlay">
+                            <span class="gallery-item-label">AI Visual — Series VI</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- ─── FOOTER ─── -->
+    <footer id="footer-placeholder"></footer>
+    <script src="assets/footer.js"></script>
+
+    <!-- ─── LIGHTBOX ─── -->
+    <div class="lightbox" id="lightbox" onclick="closeLightbox()">
+        <button class="lightbox-close" onclick="closeLightbox()">×</button>
+        <img id="lightboxImg" src="" alt="" />
+    </div>
+
+    <script>
+        /* ─── LIGHTBOX ─── */
+        function openLightbox(src) {
+            document.getElementById('lightboxImg').src = src;
+            document.getElementById('lightbox').classList.add('open');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox() {
+            document.getElementById('lightbox').classList.remove('open');
+            document.body.style.overflow = '';
+        }
+
+        document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
+
+        /* ─── FADE-IN ON SCROLL ─── */
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.fade-up').forEach((el, i) => {
+            observer.observe(el);
+        });
+    </script>
+</body>
+
+</html>
