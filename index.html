@@ -11,34 +11,15 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
     rel="stylesheet" />
+  <link rel="icon" href="assets/logoPixel2.png" type="image/png" />
   <link rel="stylesheet" href="style.css" />
 </head>
 
-<body>
+<body class="home">
 
-  <!-- ─── HEADER ─── -->
-  <header class="site-header">
-    <nav>
-      <ul class="nav-links">
-        <li><a href="index.html" class="active">Home</a></li>
-        <li><a href="services.html">Services</a></li>
-        <li><a href="reel.html">Reel</a></li>
-        <li><a href="gallery.html">Work</a></li>
-        <li><a href="workflow.html">How It Works</a></li>
-        <li><a href="contact.html">Contact</a></li>
-      </ul>
-
-    </nav>
-
-    <div class="logo-wrap">
-      <a href="index.html" class="nav-logo">
-        <div class="nav-logo-text">
-          <span class="nav-logo-name">Pixel Vibe</span>
-          <span class="nav-logo-sub">AI Studio</span>
-        </div>
-      </a>
-    </div>
-  </header>
+  <!-- ─── NAVIGATION ─── -->
+  <div id="nav-placeholder"></div>
+  <script src="assets/nav.js"></script>
 
   <!-- ─── HERO with video carousel ─── -->
   <section id="hero">
@@ -89,82 +70,79 @@
     <img id="lightboxImg" src="" alt="" />
   </div>
 
-  <script>
-    /* ─── HERO CAROUSEL ─── */
-    const heroSlides = document.querySelectorAll('.hc-slide');
-    let heroIdx = 0;
+  <script src="assets/main.js"></script>
+  /* ─── HERO CAROUSEL ─── */
+  const heroSlides = document.querySelectorAll('.hc-slide');
+  let heroIdx = 0;
 
-    function goHeroSlide(idx) {
-      const oldVid = heroSlides[heroIdx].querySelector('video');
-      if (oldVid) oldVid.pause();
-      heroSlides[heroIdx].classList.remove('active');
+  function goHeroSlide(idx) {
+  const oldVid = heroSlides[heroIdx].querySelector('video');
+  if (oldVid) oldVid.pause();
+  heroSlides[heroIdx].classList.remove('active');
 
-      heroIdx = (idx + heroSlides.length) % heroSlides.length;
+  heroIdx = (idx + heroSlides.length) % heroSlides.length;
 
-      heroSlides[heroIdx].classList.add('active');
+  heroSlides[heroIdx].classList.add('active');
 
-      const newVid = heroSlides[heroIdx].querySelector('video');
-      if (newVid) {
-        newVid.currentTime = 0;
-        newVid.play().catch(() => { });
-      }
+  const newVid = heroSlides[heroIdx].querySelector('video');
+  if (newVid) {
+  newVid.currentTime = 0;
+  newVid.play().catch(() => { });
+  }
+  }
+
+  // Initialize: Add 'ended' event listener to all videos to trigger the next one
+  heroSlides.forEach((slide, i) => {
+  const video = slide.querySelector('video');
+  if (video) {
+  video.addEventListener('ended', () => {
+  goHeroSlide(heroIdx + 1);
+  });
+  }
+  });
+
+  // Ensure the first video plays if autoplay fails or is delayed
+  const firstVid = heroSlides[0].querySelector('video');
+  if (firstVid) firstVid.play().catch(() => { });
+
+  /* ─── SCROLL EFFECTS ─── */
+  const siteHeader = document.querySelector('.site-header');
+  const logoWrap = document.querySelector('.logo-wrap');
+
+  window.addEventListener('scroll', () => {
+  const scrollY = window.scrollY;
+  const heroHeight = window.innerHeight;
+
+  // 1. Fade out the logo based on scroll depth (0 to 300px)
+  const logoOpacity = Math.max(0, 1 - scrollY / 300);
+  const logoScale = Math.max(0.9, 1 - scrollY / 1000);
+
+  if (logoWrap) {
+  logoWrap.style.opacity = logoOpacity;
+  logoWrap.style.transform = `scale(${logoScale})`;
+  logoWrap.style.pointerEvents = logoOpacity < 0.1 ? 'none' : 'auto' ; } // 2. Toggle solid background on nav after
+    passing hero height if (scrollY> heroHeight - 600) {
+    siteHeader.classList.add('scrolled');
+    } else {
+    siteHeader.classList.remove('scrolled');
     }
-
-    // Initialize: Add 'ended' event listener to all videos to trigger the next one
-    heroSlides.forEach((slide, i) => {
-      const video = slide.querySelector('video');
-      if (video) {
-        video.addEventListener('ended', () => {
-          goHeroSlide(heroIdx + 1);
-        });
-      }
-    });
-
-    // Ensure the first video plays if autoplay fails or is delayed
-    const firstVid = heroSlides[0].querySelector('video');
-    if (firstVid) firstVid.play().catch(() => { });
-
-    /* ─── SCROLL EFFECTS ─── */
-    const siteHeader = document.querySelector('.site-header');
-    const logoWrap = document.querySelector('.logo-wrap');
-
-    window.addEventListener('scroll', () => {
-      const scrollY = window.scrollY;
-      const heroHeight = window.innerHeight;
-
-      // 1. Fade out the logo based on scroll depth (0 to 300px)
-      const logoOpacity = Math.max(0, 1 - scrollY / 300);
-      const logoScale = Math.max(0.9, 1 - scrollY / 1000);
-
-      if (logoWrap) {
-        logoWrap.style.opacity = logoOpacity;
-        logoWrap.style.transform = `scale(${logoScale})`;
-        logoWrap.style.pointerEvents = logoOpacity < 0.1 ? 'none' : 'auto';
-      }
-
-      // 2. Toggle solid background on nav after passing hero height
-      if (scrollY > heroHeight - 600) {
-        siteHeader.classList.add('scrolled');
-      } else {
-        siteHeader.classList.remove('scrolled');
-      }
     });
 
     /* ─── FADE-IN ON SCROLL ─── */
     const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-          observer.unobserve(entry.target);
-        }
-      });
+    entries.forEach(entry => {
+    if (entry.isIntersecting) {
+    entry.target.classList.add('visible');
+    observer.unobserve(entry.target);
+    }
+    });
     }, { threshold: 0.1 });
 
     document.querySelectorAll('.fade-up').forEach((el, i) => {
-      el.style.transitionDelay = `${(i % 4) * 80}ms`;
-      observer.observe(el);
+    el.style.transitionDelay = `${(i % 4) * 80}ms`;
+    observer.observe(el);
     });
-  </script>
+    </script>
 
 </body>
 

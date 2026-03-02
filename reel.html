@@ -8,24 +8,18 @@
     <link rel="stylesheet" href="style.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+        rel="stylesheet" />
+    <link rel="icon" href="assets/logoPixel2.png" type="image/png" />
+    <link rel="stylesheet" href="style.css" />
 </head>
 
 <body class="subpage">
 
-    <!-- ─── HEADER ─── -->
-    <header class="site-header scrolled">
-        <nav>
-            <ul class="nav-links">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="services.html">Services</a></li>
-                <li><a href="reel.html" class="active">Reel</a></li>
-                <li><a href="gallery.html">Work</a></li>
-                <li><a href="workflow.html">How It Works</a></li>
-                <li><a href="contact.html">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
+    <!-- ─── NAVIGATION ─── -->
+    <div id="nav-placeholder"></div>
+    <script src="assets/nav.js"></script>
 
     <main>
         <!-- ─── VIDEO REEL CAROUSEL ─── -->
@@ -79,8 +73,8 @@
 
     <!-- ─── FOOTER ─── -->
     <footer id="footer-placeholder"></footer>
+    <script src="assets/main.js"></script>
     <script src="assets/footer.js"></script>
-
     <script>
         /* ─── REEL CAROUSEL ─── */
         const reelSlides = document.querySelectorAll('.reel-slide');
@@ -108,20 +102,6 @@
         document.getElementById('reelNext').addEventListener('click', () => goReelSlide(reelIdx + 1));
         reelDots.forEach(dot => dot.addEventListener('click', () => goReelSlide(parseInt(dot.dataset.slide))));
         setInterval(() => goReelSlide(reelIdx + 1), 7000);
-
-        /* ─── FADE-IN ON SCROLL ─── */
-        const observer = new IntersectionObserver(entries => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.1 });
-
-        document.querySelectorAll('.fade-up').forEach((el, i) => {
-            observer.observe(el);
-        });
     </script>
 </body>
 
