@@ -12,10 +12,10 @@ const navContent = `
 
       <ul class="nav-links">
         <li><a href="index.html" data-page="index">Home</a></li>
-        <li><a href="services.html" data-page="services">Services</a></li>
-        <li><a href="reel.html" data-page="reel">Reel</a></li>
-        <li><a href="gallery.html" data-page="gallery">Work</a></li>
-        <li><a href="workflow.html" data-page="workflow">How It Works</a></li>
+        <li><a href="service.html" data-page="service">Service</a></li>
+        <li><a href="image.html" data-page="image">Image</a></li>
+        <li><a href="video.html" data-page="video">Video</a></li>
+        <li><a href="workflow.html" data-page="workflow">Workflow</a></li>
         <li><a href="contact.html" data-page="contact">Contact</a></li>
       </ul>
 
@@ -40,64 +40,64 @@ const navContent = `
   <div class="mobile-nav">
     <ul class="mobile-nav-links">
       <li><a href="index.html" data-page="index">Home</a></li>
-      <li><a href="services.html" data-page="services">Services</a></li>
-      <li><a href="reel.html" data-page="reel">Reel</a></li>
-      <li><a href="gallery.html" data-page="gallery">Work</a></li>
-      <li><a href="workflow.html" data-page="workflow">How It Works</a></li>
-      <li><a href="contact.html" data-page="contact">Contact</a></li>
+        <li><a href="service.html" data-page="service">Service</a></li>
+        <li><a href="image.html" data-page="image">Image</a></li>
+        <li><a href="video.html" data-page="video">Video</a></li>
+        <li><a href="workflow.html" data-page="workflow">Workflow</a></li>
+        <li><a href="contact.html" data-page="contact">Contact</a></li>
     </ul>
     <a href="contact.html" class="btn-primary mobile-nav-cta">Use AI</a>
   </div>
 `;
 
 function initNav() {
-    const placeholder = document.getElementById('nav-placeholder');
-    if (!placeholder) return;
+  const placeholder = document.getElementById('nav-placeholder');
+  if (!placeholder) return;
 
-    placeholder.innerHTML = navContent;
+  placeholder.innerHTML = navContent;
 
-    const isHome = document.body.classList.contains('home');
-    const path = window.location.pathname;
-    const page = path.split("/").pop().split(".")[0] || 'index';
+  const isHome = document.body.classList.contains('home');
+  const path = window.location.pathname;
+  const page = path.split("/").pop().split(".")[0] || 'index';
 
-    // Set active link
-    const allLinks = document.querySelectorAll(`[data-page="${page}"]`);
-    allLinks.forEach(link => link.classList.add('active'));
+  // Set active link
+  const allLinks = document.querySelectorAll(`[data-page="${page}"]`);
+  allLinks.forEach(link => link.classList.add('active'));
 
-    const header = document.getElementById('mainHeader');
-    const subLogo = document.getElementById('navSubLogo');
-    const homeLogo = document.getElementById('homeLogoWrap');
+  const header = document.getElementById('mainHeader');
+  const subLogo = document.getElementById('navSubLogo');
+  const homeLogo = document.getElementById('homeLogoWrap');
 
-    if (isHome) {
-        if (subLogo) subLogo.style.display = 'none';
-        if (homeLogo) homeLogo.style.display = 'flex';
-        header.classList.remove('scrolled');
-    } else {
-        if (subLogo) subLogo.style.display = 'flex'; // Use flex for centering logic
-        if (homeLogo) homeLogo.style.display = 'none';
-        header.classList.add('scrolled');
-    }
+  if (isHome) {
+    if (subLogo) subLogo.style.display = 'none';
+    if (homeLogo) homeLogo.style.display = 'flex';
+    header.classList.remove('scrolled');
+  } else {
+    if (subLogo) subLogo.style.display = 'flex'; // Use flex for centering logic
+    if (homeLogo) homeLogo.style.display = 'none';
+    header.classList.add('scrolled');
+  }
 
-    // Re-bind menu toggle logic (since elements were just added)
-    const menuToggle = document.getElementById('menuToggle');
-    if (menuToggle) {
-        menuToggle.onclick = () => {
-            document.body.classList.toggle('menu-open');
-        };
-    }
+  // Re-bind menu toggle logic (since elements were just added)
+  const menuToggle = document.getElementById('menuToggle');
+  if (menuToggle) {
+    menuToggle.onclick = () => {
+      document.body.classList.toggle('menu-open');
+    };
+  }
 
-    // Close menu on link click
-    const mobileLinks = document.querySelectorAll('.mobile-nav-links a');
-    mobileLinks.forEach(link => {
-        link.onclick = () => {
-            document.body.classList.remove('menu-open');
-        };
-    });
+  // Close menu on link click
+  const mobileLinks = document.querySelectorAll('.mobile-nav-links a');
+  mobileLinks.forEach(link => {
+    link.onclick = () => {
+      document.body.classList.remove('menu-open');
+    };
+  });
 }
 
 // Run as soon as DOM is ready
 if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initNav);
+  document.addEventListener('DOMContentLoaded', initNav);
 } else {
-    initNav();
+  initNav();
 }
