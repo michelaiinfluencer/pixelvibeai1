@@ -322,12 +322,13 @@ body.home .nav-cta {
 
 @media (max-width: 900px) {
   .nav-logo-name {
-    font-size: 3rem;
+    font-size: 3.5rem;
+    margin-top: 20px;
   }
 
   .nav-logo-sub {
-    font-size: 1.2rem;
-    letter-spacing: 2px;
+    font-size: 1.4rem;
+    letter-spacing: 2.2px;
   }
 }
 
@@ -348,7 +349,8 @@ body.home .nav-cta {
     cursor: pointer;
     z-index: 300;
     pointer-events: auto;
-    position: absolute;
+    position: fixed;
+    top: 22px;
     right: 24px;
   }
 
@@ -370,6 +372,26 @@ body.home .nav-cta {
 
   body.menu-open .menu-toggle span:nth-child(3) {
     transform: translateY(-7px) rotate(-45deg);
+  }
+
+  .nav-sub-logo {
+    position: relative;
+    left: 24px;
+    top: auto;
+    transform: none;
+  }
+
+  .nav-sub-logo img {
+    height: 40px;
+  }
+
+  nav {
+    padding: 12px 24px;
+    justify-content: space-between;
+  }
+
+  .dot {
+    display: none;
   }
 
   body.subpage.menu-open .menu-toggle span {
@@ -761,7 +783,8 @@ body.menu-open .mobile-nav {
 
   .service-media {
     width: 100%;
-    height: 240px;
+    aspect-ratio: 9 / 16;
+    height: auto;
   }
 }
 

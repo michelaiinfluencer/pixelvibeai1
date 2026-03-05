@@ -44,7 +44,6 @@ const navContent = `
         <li><a href="workflow.html" data-page="workflow">Workflow</a></li>
         <li><a href="contact.html" data-page="contact">Contact</a></li>
     </ul>
-    <a href="contact.html" class="btn-primary mobile-nav-cta">Use AI</a>
   </div>
 `;
 
