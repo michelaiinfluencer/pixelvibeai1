@@ -968,7 +968,7 @@ body.menu-open .mobile-nav {
   gap: 3px;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 850px) {
   .gallery-grid {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -1037,7 +1037,7 @@ body.menu-open .mobile-nav {
   /* Center items vertically if they have different heights */
 }
 
-@media (max-width: 768px) {
+@media (max-width: 850px) {
   .video-grid {
     grid-template-columns: 1fr;
   }
@@ -1586,7 +1586,7 @@ footer {
   gap: 2px;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 850px) {
   .tools-grid {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -1740,10 +1740,38 @@ footer {
   }
 }
 
+/* ── Mobile section spacing — portfolio page only ── */
+@media (max-width: 850px) {
+
+  /* Clear fixed nav (75px) + eyebrow label that lives outside sections */
+  body.portfolio main {
+    padding-top: 86px;
+  }
+
+  /* Compact vertical spacing — scoped to portfolio only.
+     !important overrides the inline style="padding-top:140px" on each section */
+  body.portfolio main section {
+    padding-top: 24px !important;
+    padding-bottom: 24px !important;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  /* Tighten gallery header gap */
+  body.portfolio .gallery-header {
+    margin-bottom: 18px;
+  }
+
+  /* Eyebrow "Our Work" sits in main padding area — zero extra gap */
+  body.portfolio main > .section-eyebrow {
+    margin-bottom: 0;
+  }
+}
+
 /* ════════════════════════════════════
    MOBILE SWIPE CAROUSEL (portfolio)
 ════════════════════════════════════ */
-@media (max-width: 768px) {
+@media (max-width: 850px) {
 
   /* Hide the desktop grid on mobile */
   .gallery-grid,
@@ -1757,7 +1785,8 @@ footer {
     width: 100%;
     overflow: hidden;
     border-radius: 0;
-    touch-action: pan-y;   /* allow vertical scroll, capture horizontal */
+    touch-action: pan-y;
+    /* allow vertical scroll, capture horizontal */
     user-select: none;
     -webkit-user-select: none;
   }
@@ -1804,7 +1833,7 @@ footer {
     left: 0;
     right: 0;
     padding: 40px 20px 18px;
-    background: linear-gradient(to top, rgba(0,0,0,0.72) 0%, transparent 100%);
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.72) 0%, transparent 100%);
     color: #fff;
     font-size: 0.68rem;
     font-family: var(--font-mono);
@@ -1823,10 +1852,10 @@ footer {
     width: 38px;
     height: 38px;
     border-radius: 50%;
-    background: rgba(0,0,0,0.55);
+    background: rgba(0, 0, 0, 0.55);
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
-    border: 1px solid rgba(255,255,255,0.14);
+    border: 1px solid rgba(255, 255, 255, 0.14);
     color: #fff;
     font-size: 1rem;
     display: flex;
@@ -1838,12 +1867,17 @@ footer {
   }
 
   .mob-swiper-btn:active {
-    background: rgba(0,0,0,0.8);
+    background: rgba(0, 0, 0, 0.8);
     transform: translateY(-50%) scale(0.93);
   }
 
-  .mob-swiper-btn.prev { left: 12px; }
-  .mob-swiper-btn.next { right: 12px; }
+  .mob-swiper-btn.prev {
+    left: 12px;
+  }
+
+  .mob-swiper-btn.next {
+    right: 12px;
+  }
 
   .mob-swiper-btn svg {
     width: 14px;
@@ -1855,36 +1889,5 @@ footer {
     stroke-linejoin: round;
   }
 
-  /* ── Dot indicators ── */
-  .mob-swiper-dots {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 6px;
-    padding: 14px 0 4px;
-  }
-
-  .mob-swiper-dot {
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    background: var(--gray-300);
-    transition: background 0.3s, transform 0.3s, width 0.3s;
-    cursor: pointer;
-  }
-
-  .mob-swiper-dot.active {
-    background: var(--gray-700);
-    transform: scale(1.3);
-  }
-
-  /* Counter pill  e.g. "2 / 6" */
-  .mob-swiper-counter {
-    text-align: center;
-    font-size: 0.65rem;
-    font-family: var(--font-mono);
-    color: var(--gray-300);
-    letter-spacing: 1px;
-    margin-bottom: 6px;
-  }
+  /* dots and counter removed — arrows only */
 }
