@@ -26,7 +26,7 @@ const navContent = `
     </nav>
 
     <!-- Home Page Big Logo (Hidden on subpages) -->
-    <div class="logo-wrap" id="homeLogoWrap">
+    <div class="logo-wrap" id="homeLogoWrap" style="margin-left: 25px">
       <a href="index.html" class="nav-logo">
         <div class="nav-logo-text">
           <span class="nav-logo-name">Seif</span>
