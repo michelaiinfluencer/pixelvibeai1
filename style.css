@@ -247,7 +247,7 @@ nav {
   font-family: var(--font-dossis);
   font-weight: 600;
   display: inline-block;
-  transform: scaleY(1.3);
+  transform: scaleY(1.1);
   color: var(--accent);
   letter-spacing: 36px;
   text-transform: uppercase;
@@ -259,7 +259,7 @@ nav {
   display: flex;
   align-items: center;
   font-weight: 400;
-  gap: 15px;
+  gap: 23px;
   /* Reduced gap to account for increased link padding */
   list-style: none;
 }
@@ -294,23 +294,27 @@ body.subpage .nav-links a.active {
 
 .nav-sub-logo {
   position: absolute;
-  left: 15px;
+  left: 20px;
   top: 50%;
   transform: translateY(-50%);
   display: flex;
   align-items: center;
   text-decoration: none;
-  font-weight: 900;
-  color: #fff;
-  font-size: 1.7rem;
-  letter-spacing: -1px;
-  text-transform: uppercase;
+  transition: opacity 0.2s;
 
 }
 
-body.subpage .nav-sub-logo {
-  color: var(--accent);
+.nav-sub-logo:hover {
+  opacity: 0.8;
 }
+
+.nav-sub-logo img {
+  height: 40px;
+  width: auto;
+  display: block;
+}
+
+/* Removed body.subpage .nav-sub-logo color rule as it's now an image */
 
 
 
@@ -364,8 +368,8 @@ body.home .nav-cta {
 
   .nav-logo-sub {
     font-size: 2.2rem;
-    letter-spacing: 28px;
-    margin-left: 14px;
+    letter-spacing: 30px;
+    margin-left: 10px;
   }
 }
 
@@ -427,11 +431,13 @@ body.menu-open .logo-wrap {
 
   .nav-sub-logo {
     position: relative;
-    left: -20px;
+    left: 0;
     top: auto;
     transform: none;
-    font-size: 1.9rem;
-    font-weight: 900;
+  }
+
+  .nav-sub-logo img {
+    height: 24px;
   }
 
   nav {
@@ -1210,7 +1216,7 @@ body.menu-open .mobile-nav {
 }
 
 .contact-header {
-  margin-bottom: 80px;
+  margin-bottom: 10px;
 }
 
 .contact-header .section-title {
@@ -1742,11 +1748,13 @@ footer {
 
 /* ── Portfolio Page Spacing ── */
 body.portfolio main {
-  padding-top: 240px; /* Show "Our Work" below the giant logo on desktop */
+  padding-top: 240px;
+  /* Show "Our Work" below the giant logo on desktop */
 }
 
-body.portfolio main > .section-eyebrow {
-  padding-left: 24px; /* Align with sections gutter on desktop */
+body.portfolio main>.section-eyebrow {
+  padding-left: 24px;
+  /* Align with sections gutter on desktop */
   max-width: var(--container-max);
   margin-left: auto;
   margin-right: auto;
@@ -1770,7 +1778,7 @@ body.portfolio main > .section-eyebrow {
   }
 
   /* Align eyebrow with section content on mobile */
-  body.portfolio main > .section-eyebrow {
+  body.portfolio main>.section-eyebrow {
     padding-left: 20px;
     margin-left: 0;
   }
@@ -1781,7 +1789,7 @@ body.portfolio main > .section-eyebrow {
   }
 
   /* Eyebrow "Our Work" sits in main padding area — zero extra gap */
-  body.portfolio main > .section-eyebrow {
+  body.portfolio main>.section-eyebrow {
     margin-bottom: 0;
   }
 }

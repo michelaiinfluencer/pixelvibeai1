@@ -6,12 +6,11 @@ const navContent = `
   <header class="site-header" id="mainHeader">
     <nav>
       <!-- Subpage Mini Logo (Left Corner) -->
-      <a href="index.html" class="nav-sub-logo" id="navSubLogo">
-        Seif Studios
+      <a href="index.html" id="navSubLogo" class="nav-sub-logo">
+        <img src="assets/Logo/LogoSSWhite1.png" alt="Logo">
       </a>
 
       <ul class="nav-links">
-        <li><a href="index.html" data-page="index">Home</a></li>
         <li><a href="solutions.html" data-page="solutions">Solutions</a></li>
         <li><a href="portfolio.html" data-page="portfolio">Portfolio</a></li>
         <li><a href="workflow.html" data-page="workflow">Workflow</a></li>
@@ -27,7 +26,7 @@ const navContent = `
 
     <!-- Home Page Big Logo (Hidden on subpages) -->
     <div class="logo-wrap" id="homeLogoWrap" style="margin-left: 25px">
-      <a href="index.html" class="nav-logo">
+      <a href="solutions.html" class="nav-logo">
         <div class="nav-logo-text">
           <span class="nav-logo-name">Seif</span>
           <span class="nav-logo-sub">Studios</span>
@@ -38,7 +37,6 @@ const navContent = `
 
   <div class="mobile-nav">
     <ul class="mobile-nav-links">
-      <li><a href="index.html" data-page="index">Home</a></li>
         <li><a href="solutions.html" data-page="solutions">Solutions</a></li>
         <li><a href="portfolio.html" data-page="portfolio">Portfolio</a></li>
         <li><a href="workflow.html" data-page="workflow">Workflow</a></li>
