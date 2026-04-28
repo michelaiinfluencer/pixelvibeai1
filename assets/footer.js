@@ -1,7 +1,7 @@
 const footerContent = `
 <div class="footer-top">
     <div class="footer-brand">
-        <p>Seif Studios — Creative Agency</p>
+        <p>Seif Studios — Create Without Limits</p>
     </div>
     <div class="footer-links">
         <a href="contact.html">Contact</a>

@@ -437,7 +437,7 @@ body.menu-open .logo-wrap {
   }
 
   .nav-sub-logo img {
-    height: 24px;
+    height: 40px;
   }
 
   nav {
@@ -1513,6 +1513,7 @@ footer {
   border: 1px solid var(--gray-100);
   border-radius: 980px;
   padding: 5px 14px;
+  padding-top: 2px;
 }
 
 @media (max-width: 600px) {
@@ -1740,9 +1741,29 @@ footer {
 /* ════════════════════════════════════
    RESPONSIVE HELPERS
 ════════════════════════════════════ */
-@media (max-width: 600px) {
+@media (max-width: 1024px) {
   footer {
-    padding: 40px 24px 28px;
+    padding: 20px 20px 16px;
+  }
+
+  .footer-top {
+    flex-direction: column;
+    text-align: center;
+    gap: 16px;
+  }
+
+  .footer-brand {
+    max-width: 100%;
+  }
+
+  .footer-brand p {
+    margin-bottom: 0;
+  }
+
+  .footer-links {
+    justify-content: center;
+    gap: 16px;
+    margin-bottom: 4px;
   }
 }
 
